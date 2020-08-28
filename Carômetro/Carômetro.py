@@ -1,6 +1,6 @@
-arquivo_excel = r'Cópia com mais infos de CV e Foto para Pitch Pessoal (teste) (respostas).xlsx'
-arquivo_ppt_template = 'CC_Template_PPT_20180724 - Copia.pptx'
-titulo_programa = "Programa de Startup 2020"
+arquivo_excel = r'CV e Foto para Pitch Pessoal - Programa de Carreira 2020 (respostas).xlsx' #ok
+arquivo_ppt_template = r'CC_Template_PPT_20180724 - Copia.pptx' #ok
+titulo_programa = "Programa de Carreira 2020" #ok
 
 #bibliotecas de python-pptx
 from pptx import Presentation
@@ -19,7 +19,8 @@ from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
 
 #quando colocamos um argumento, ele busca por esse pptx no diretorio
-prs = Presentation(arquivo_ppt_template)
+prs = Presentation('CC_Template_PPT_20180724 - Copia.pptx')
+
 
 # cria um slide com o layout 0 das opções, nesse template é o com titulo e subtítulo
 title_slide_layout = prs.slide_layouts[0]
@@ -28,12 +29,12 @@ title = slide.shapes.title
 subtitle = slide.placeholders[1]
 
 # coloca o titulo e subtitulo que queremos
-title.text = "Carômetro"
+title.text = "Portfólio de Alunos"
 subtitle.text = titulo_programa
 
 # Directory 
 directory_fotos = "Fotos formulario"
-directory_CV = "CV Participantes"
+directory_CV = "Resume Book"
   
 # Diretorio atual
 parent_dir = os.getcwd()
@@ -184,17 +185,17 @@ for row in f1.index:
     run = p.add_run()
     font = run.font
     font.size = Pt(12)
-    run.hyperlink.address = f1['LinkedIn'][row]
-    run.text = f1['LinkedIn'][row]
+    run.hyperlink.address = f1['Link para o Linkedin'][row]
+    run.text = f1['Link para o Linkedin'][row]
 
        
     #------------------- CURRICULO -----------------
 
-#    CV_id = CV_ids[row]
-#    destination_CV = caminho_CV + '//' + str(f1["Nome completo"][row]) + '_CV.pdf'
-#    CV_path = directory_CV +'//' + str(f1["Nome completo"][row]) + '_CV.pdf'
-#    file6 = drive.CreateFile({'id': CV_id})
-#    file6.GetContentFile(CV_path)
+    CV_id = CV_ids[row]
+    destination_CV = caminho_CV + '//' + str(f1["Nome completo"][row]) + '_CV.pdf'
+    CV_path = directory_CV +'//' + str(f1["Nome completo"][row]) + '_CV.pdf'
+    file6 = drive.CreateFile({'id': CV_id})
+    file6.GetContentFile(CV_path)
 
 #    p = tf.add_paragraph()
 #    p = tf.paragraphs[9]
