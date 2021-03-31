@@ -1,5 +1,5 @@
-arquivo_excel = r'CV e Foto para Pitch Pessoal - Programa de Carreira 2020 (respostas).xlsx' #ok
-arquivo_ppt_template = r'CC_Template_PPT_20180724 - Copia.pptx' #ok
+arquivo_excel = r'Carômetro TESTE  (respostas).xlsx' #ok
+arquivo_ppt_template = r'AdP_Template PPT 2020 - Portifolio de alunos.pptx' #ok
 titulo_programa = "Programa de Carreira 2020" #ok
 
 #bibliotecas de python-pptx
@@ -19,14 +19,14 @@ from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
 
 #quando colocamos um argumento, ele busca por esse pptx no diretorio
-prs = Presentation('CC_Template_PPT_20180724 - Copia.pptx')
+prs = Presentation('AdP_Template PPT 2020 - Portifolio de alunos.pptx')
 
 
-# cria um slide com o layout 0 das opções, nesse template é o com titulo e subtítulo
-title_slide_layout = prs.slide_layouts[0]
+# cria um slide com o layout 0 das opcoes, nesse template é o com titulo e subtitulo
+title_slide_layout = prs.slide_layouts[2]
 slide = prs.slides.add_slide(title_slide_layout)
 title = slide.shapes.title
-subtitle = slide.placeholders[1]
+subtitle = slide.placeholders[0]
 
 # coloca o titulo e subtitulo que queremos
 title.text = "Portfólio de Alunos"
@@ -56,7 +56,7 @@ drive = GoogleDrive(gauth)
 
 f1 = pd.read_excel(arquivo_excel,
                      header=0,
-                     parse_dates=True)
+                     parse_dates=True, engine='openpyxl')
 f1 = f1.sort_values('Nome completo').reset_index()
 
 
@@ -84,8 +84,8 @@ f1['foto_id'] = CV_ids
 
 for row in f1.index:
     
-    # cria um slide com o layout 2 das opções, nesse template é o com titulo e texto
-    texto_slide_layout = prs.slide_layouts[2]
+    # cria um slide com o layout 2 das opcoes, nesse template eh o com titulo e texto
+    texto_slide_layout = prs.slide_layouts[7]
     slide = prs.slides.add_slide(texto_slide_layout)
 
     #coloca o nome como título

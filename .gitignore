@@ -1,0 +1,22 @@
+## pastas ocultas
+
+.vscode/
+Carometro/.vscode/
+
+## arquivos internos adp
+
+Carometro/*.pptx
+Carometro/*.rar
+
+## arquivos de credenciamento
+
+Carometro/client_secrets.json
+
+
+## arquivos sensiveis
+
+Carometro/CV e Foto para Pitch Pessoal - Programa de Carreira 2020 (respostas).xlsx
+Carometro/Compartilhamento de Dados de CV e Foto - cruzamento.csv
+Carometro/Compartilhamento de Dados de CV e Foto.xlsx
+Carometro/Fotos formulario/
+Carometro/Resume Book
